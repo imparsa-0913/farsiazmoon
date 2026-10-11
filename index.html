@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آزمون فارسی پنجم ابتدایی - درس یک - خانم اسعدی</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 50%, #e8eaf6 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 30px 15px;
+        }
+
+        .container {
+            max-width: 850px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(180, 130, 180, 0.25), 0 8px 20px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* هدر */
+        .header {
+            background: linear-gradient(135deg, #f8bbd0 0%, #e1bee7 50%, #d1c4e9 100%);
+            padding: 35px 30px 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .header::before {
+            content: '🌸';
+            position: absolute;
+            top: 10px;
+            right: 20px;
+            font-size: 40px;
+            opacity: 0.4;
+            transform: rotate(15deg);
+        }
+
+        .header::after {
+            content: '🌿';
+            position: absolute;
+            bottom: 5px;
+            left: 25px;
+            font-size: 35px;
+            opacity: 0.35;
+            transform: rotate(-10deg);
+        }
+
+        .header h1 {
+            font-size: 1.9rem;
+            color: #4a148c;
+            font-weight: 700;
+            margin-bottom: 6px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .header h2 {
+            font-size: 1.15rem;
+            color: #6a1b9a;
+            font-weight: 400;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* نام معلم */
+        .teacher-name {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(4px);
+            color: #6a1b9a;
+            padding: 6px 24px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 12px;
+            position: relative;
+            z-index: 1;
+            border: 1.5px solid rgba(206, 147, 216, 0.5);
+            box-shadow: 0 4px 12px rgba(171, 71, 188, 0.12);
+        }
+
+        .teacher-name .icon {
+            margin-left: 6px;
+        }
+
+        .header .decor-line {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #ce93d8, #f48fb1, #ce93d8);
+            border-radius: 10px;
+            margin: 12px auto 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* متن درس */
+        .lesson-box {
+            margin: 25px 30px 10px;
+            background: linear-gradient(135deg, #fdf2f8, #f3e5f5);
+            border-right: 5px solid #ce93d8;
+            border-radius: 18px;
+            padding: 22px 25px;
+            position: relative;
+        }
+
+        .lesson-box .label {
+            display: inline-block;
+            background: linear-gradient(135deg, #ab47bc, #8e24aa);
+            color: #fff;
+            padding: 4px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            box-shadow: 0 4px 12px rgba(171, 71, 188, 0.3);
+        }
+
+        .lesson-box p {
+            font-size: 0.95rem;
+            line-height: 2;
+            color: #4a148c;
+            text-align: justify;
+            margin-bottom: 8px;
+        }
+
+        .lesson-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* بخش سوالات */
+        .quiz-section {
+            padding: 10px 30px 35px;
+        }
+
+        .quiz-section .section-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #6a1b9a;
+            margin-bottom: 20px;
+            margin-top: 10px;
+        }
+
+        .quiz-section .section-title .icon {
+            font-size: 1.4rem;
+        }
+
+        .question-card {
+            background: #faf5ff;
+            border-radius: 18px;
+            padding: 20px 22px;
+            margin-bottom: 18px;
+            border: 1.5px solid #ede7f6;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .question-card:hover {
+            border-color: #ce93d8;
+            box-shadow: 0 6px 20px rgba(206, 147, 216, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .question-card .q-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, #ce93d8, #ba68c8);
+            color: #fff;
+            border-radius: 50%;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-left: 8px;
+            flex-shrink: 0;
+        }
+
+        .question-card .q-text {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #4a148c;
+            line-height: 1.8;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+
+        .question-card .q-text .q-content {
+            flex: 1;
+        }
+
+        /* گزینه‌ها */
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding-right: 40px;
+        }
+
+        .option {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+            padding: 10px 16px;
+            border-radius: 12px;
+            border: 1.5px solid #ede7f6;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            font-size: 0.92rem;
+            color: #4a148c;
+        }
+
+        .option:hover {
+            border-color: #ce93d8;
+            background: #fdf2f8;
+            transform: translateX(-4px);
+        }
+
+        .option input[type="radio"] {
+            appearance: none;
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #ce93d8;
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+
+        .option input[type="radio"]:checked {
+            border-color: #8e24aa;
+            background: #8e24aa;
+            box-shadow: inset 0 0 0 3px #fff;
+        }
+
+        /* سوالات تشریحی */
+        .short-answer {
+            padding-right: 40px;
+        }
+
+        .short-answer textarea {
+            width: 100%;
+            min-height: 70px;
+            border: 1.5px solid #ede7f6;
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 0.92rem;
+            color: #4a148c;
+            resize: vertical;
+            outline: none;
+            transition: border-color 0.3s;
+            background: #fff;
+            direction: rtl;
+        }
+
+        .short-answer textarea:focus {
+            border-color: #ce93d8;
+            box-shadow: 0 0 0 3px rgba(206, 147, 216, 0.15);
+        }
+
+        .short-answer textarea::placeholder {
+            color: #b39ddb;
+        }
+
+        /* دکمه‌ها */
+        .btn-group {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 45px;
+            border: none;
+            border-radius: 50px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, #ab47bc, #8e24aa);
+            color: #fff;
+            box-shadow: 0 8px 25px rgba(142, 36, 170, 0.35);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(142, 36, 170, 0.45);
+        }
+
+        .btn-reset {
+            background: #f3e5f5;
+            color: #6a1b9a;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+        }
+
+        .btn-reset:hover {
+            background: #ede7f6;
+            transform: translateY(-3px);
+        }
+
+        /* نتیجه */
+        .result-box {
+            display: none;
+            margin-top: 25px;
+            background: linear-gradient(135deg, #f3e5f5, #fce4ec);
+            border-radius: 20px;
+            padding: 25px 30px;
+            text-align: center;
+            border: 2px solid #ce93d8;
+            animation: fadeIn 0.6s ease;
+        }
+
+        .result-box.show {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .result-box .score {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: #6a1b9a;
+        }
+
+        .result-box .message {
+            font-size: 1rem;
+            color: #4a148c;
+            margin-top: 8px;
+            line-height: 1.8;
+        }
+
+        .result-box .emoji {
+            font-size: 2.5rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* فوتر */
+        .footer {
+            text-align: center;
+            padding: 18px;
+            background: linear-gradient(135deg, #fdf2f8, #f3e5f5);
+            color: #8e24aa;
+            font-size: 0.8rem;
+            border-top: 1px solid #ede7f6;
+        }
+
+        .footer span {
+            font-weight: 600;
+        }
+
+        /* واکنش‌گرایی */
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.4rem; }
+            .header h2 { font-size: 1rem; }
+            .teacher-name { font-size: 0.9rem; padding: 5px 18px; }
+            .lesson-box { margin: 15px 15px 5px; padding: 16px; }
+            .lesson-box p { font-size: 0.85rem; }
+            .quiz-section { padding: 10px 15px 25px; }
+            .question-card { padding: 15px; }
+            .question-card .q-text { font-size: 0.9rem; }
+            .option { font-size: 0.85rem; padding: 8px 12px; }
+            .options { padding-right: 20px; }
+            .short-answer { padding-right: 20px; }
+            .btn { padding: 12px 30px; font-size: 0.9rem; }
+            .btn-group { flex-direction: column; align-items: center; }
+            .result-box .score { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- هدر -->
+    <div class="header">
+        <h1>🌸 آزمون فارسی 🌸</h1>
+        <h2>پایه پنجم ابتدایی — درس یک</h2>
+        <div class="teacher-name">
+            <span class="icon">👩‍🏫</span>
+            آموزگار: خانم اسعدی
+        </div>
+        <div class="decor-line"></div>
+    </div>
+
+    <!-- متن درس -->
+    <div class="lesson-box">
+        <span class="label">📖 متن درس: جهانی که در آن زندگی می‌کنیم، سرشار از شگفتی‌ها</span>
+        <p>
+            جهانی که در آن زندگی می‌کنیم، سرشار از شگفتی‌ها است. پدیده‌هایی لطیف، زیبا و عجیب، پیش روی ما هستند که به سادگی از کنارشان می‌گذریم؛ در حالی که اگر اندکی درنگ کنیم، می‌بینیم که هر کدام از این پدیده‌ها تماشاگهی برای دیدن زیبایی‌های آفرینش و ایستگاه‌هایی برای اندیشیدن هستند.
+        </p>
+        <p>
+            اگر می‌خواهیم عالم را بهتر بشناسیم، یک راه ساده آن است که پدیده‌ها را خوب تماشا کنیم، درباره‌ی آفرینش هریک بیندیشیم و آنها را با یکدیگر مقایسه کنیم. مثلاً کوه‌های سر به فلک کشیده را با درّه‌های عمیق، گل را با خار، زنبور را با خرمگس، بهار را با زمستان و …
+        </p>
+        <p>
+            مطالعه در طبیعت و تأمّل درباره‌ی چیزهایی که هر روز می‌بینیم و از کنارشان می‌گذریم، راه مناسبی برای شناخت آنها است. پرسش از هر چیز و جست‌وجو برای یافتن پاسخ، کاری است که همه‌ی دانشمندان و عالمان انجام می‌دهند. من و شما هم، باید این ویژگی را در خود پرورش دهیم.
+        </p>
+        <p>
+            ما برخی از رفتارها، کردارها و کارهای خودمان را از روی عادت انجام می‌دهیم؛ به همین دلیل هم از خود نمی‌پرسیم که چرا این گونه است، چرا باید این کارها را بکنیم؟ و بسیار پرسش‌های دیگر.
+        </p>
+        <p>
+            همین آب گوارایی که زندگی ما به آن وابسته است. بهترین موضوع برای فکر کردن و یکی از شگفتی‌ها است. آب چیست؟ چگونه به وجود آمده است؟ اگر روزی آب در روی زمین نباشد، آیا انسان می‌تواند آن را پدید آورد؟
+        </p>
+        <p>
+            به هر حال، عالَم تماشاخانه‌ٔ شگفتی‌های آفرینش است. یعنی به هر طرف که نگاه می‌کنیم، آفریده‌های زیبای خداوند را می‌بینیم. این جهان، دفتری است که خدای مهربان، به پاکی و زیبایی در آن نگاشته و می‌نگارد.
+        </p>
+        <p>
+            یکی دیگر از این آفریده‌های زیبا و لطیف، گیاهان و سبزه‌ها هستند. علف‌های سبز را دیده‌اید؟ خیلی نرم و شکننده هستند. در سرمای سخت یا گرمای زیاد، پژمرده می‌شوند ولی گاهی می‌بینیم همین علف‌های نازک و لطیف، از میان سنگلاخ سر در می‌آورند، یا کف زمین سخت و محکم را می‌شکافند و بیرون می‌آیند.
+        </p>
+        <p>
+            «هیس، گوش بده! به آفریده‌های ساکت خدا گوش بده. به پروانه‌ای با بال‌هایی مخملی. به قطره‌های باران که حلقه‌های ساکت روی آب را می‌سازند، گوش کن. آیا می‌توانی صدای حشره‌هایی را که در زیر زمین می‌جنبند، بشنوی؟ صدای ماهی‌های تالاب را چطور؟ آن بالا را نگاه کن! آسمان، آبیِ آبی است و یک تکّه ابرِ ساکت در آن شنا می‌کند. این پایین را ببین! علف‌ها و برگ‌ها در نسیم، فقط تکان می‌خورند. نگاه کن… و صداهای کوتاه و بلند، گوش بده، تا آفریده‌های ساکت خدا را بشناسی. بادها سفر می‌کنند. علف‌ها رشد می‌کنند. عنکبوت‌ها، بین زمین و آسمان، تار می‌تنند. آیا تو صدای تاریکی شب را می‌شنوی؟ صدای روشنایی روز را چطور؟ صدای شبنم صبحگاهی را، هنگامی که سرزده به خانه‌ٔ بزرگ، وارد می‌شود؟ به هر طرف نگاه کن… و گوش بده. آفریده‌های ساکت خدا همیشه آنجا هستند. آیا تو آنها را می‌بینی و صدایشان را می‌شنوی؟»
+        </p>
+    </div>
+
+    <!-- سوالات -->
+    <div class="quiz-section">
+        <div class="section-title">
+            <span class="icon">✏️</span>
+            <span>به سوالات زیر پاسخ بده</span>
+        </div>
+
+        <form id="quizForm">
+            <!-- سوال ۱ -->
+            <div class="question-card">
+                <div class="q-text">
+                    <span class="q-number">۱</span>
+                    <span class="q-content">بر اساس متن درس، برای شناخت بهتر عالم چه راهی پیشنهاد شده است؟</span>
+                </div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q1" value="1">
+                        <span>فقط تماشای کوه‌ها و درّه‌ها</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="2">
+                        <span>تماشا کردن پدیده‌ها، اندیشیدن درباره‌ی آفرینش آنها و مقایسه با یکدیگر</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="3">
+                        <span>سفر کردن به مناطق مختلف</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q1" value="4">
+                        <span>فقط مطالعه کتاب‌های علمی</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- سوال ۲ -->
+            <div class="question-card">
+                <div class="q-text">
+                    <span class="q-number">۲</span>
+                    <span class="q-content">نویسنده، جهان را چه چیزی معرفی می‌کند؟</span>
+                </div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q2" value="1">
+                        <span>تماشاخانه‌ی شگفتی‌های آفرینش</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="2">
+                        <span>دفتری پر از نوشته‌های انسان‌ها</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="3">
+                        <span>جنگلی تاریک و پر از رمز و راز</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q2" value="4">
+                        <span>موزه‌ای از صنایع دستی</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- سوال ۳ -->
+            <div class="question-card">
+                <div class="q-text">
+                    <span class="q-number">۳</span>
+                    <span class="q-content">در متن درس، کدام مورد به عنوان یکی از شگفتی‌ها و بهترین موضوع برای فکر کردن معرفی شده است؟</span>
+                </div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q3" value="1">
+                        <span>کوه‌های سر به فلک کشیده</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="2">
+                        <span>آب گوارا</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="3">
+                        <span>پروانه‌های مخملی</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q3" value="4">
+                        <span>عنکبوت‌ها</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- سوال ۴ -->
+            <div class="question-card">
+                <div class="q-text">
+                    <span class="q-number">۴</span>
+                    <span class="q-content">نویسنده درباره‌ی علف‌های سبز چه می‌گوید؟</span>
+                </div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q4" value="1">
+                        <span>همیشه سبز و محکم هستند</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="2">
+                        <span>نرم و شکننده هستند ولی گاهی از میان سنگلاخ سر در می‌آورند</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="3">
+                        <span>در گرما و سرما همیشه زنده می‌مانند</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q4" value="4">
+                        <span>فقط در بهار رشد می‌کنند</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- سوال ۵ -->
+            <div class="question-card">
+                <div class="q-text">
+                    <span class="q-number">۵</span>
+                    <span class="q-content">چه کسانی از هر چیز پرسش می‌کنند و برای یافتن پاسخ جست‌وجو می‌کنند؟</span>
+                </div>
+                <div class="options">
+                    <label class="option">
+                        <input type="radio" name="q5" value="1">
+                        <span>فقط معلمان</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="2">
+                        <span>دانشمندان و عالمان</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="3">
+                        <span>فقط نویسندگان</span>
+                    </label>
+                    <label class="option">
+                        <input type="radio" name="q5" value="4">
+                        <span>همه مردم عادی</span>
+                    </label>
+                </div>
+            </div>
+
+            <!-- سوال ۶ - تشریحی -->
+            <div class="question-card">
+                <div class="q-text">
+                    <span class="q-number">۶</span>
+                    <span class="q-content">چرا نویسنده می‌گوید: «آفریده‌های ساکت خدا همیشه آنجا هستند»؟ تو چه فکری می‌کنی؟ (در چند جمله بنویس)</span>
+                </div>
+                <div class="short-answer">
+                    <textarea placeholder="پاسخ خود را اینجا بنویسید..."></textarea>
+                </div>
+            </div>
+
+            <!-- سوال ۷ - تشریحی -->
+            <div class="question-card">
+                <div class="q-text">
+                    <span class="q-number">۷</span>
+                    <span class="q-content">از متن درس، دو نمونه از پدیده‌هایی که نویسنده با یکدیگر مقایسه کرده است، بنویس.</span>
+                </div>
+                <div class="short-answer">
+                    <textarea placeholder="مثال: گل با خار، بهار با زمستان..." style="min-height:50px;"></textarea>
+                </div>
+            </div>
+        </form>
+
+        <!-- دکمه‌ها -->
+        <div class="btn-group">
+            <button class="btn btn-submit" onclick="calculateScore()">
+                <span>📝</span> مشاهده نتیجه
+            </button>
+            <button class="btn btn-reset" onclick="resetQuiz()">
+                <span>🔄</span> شروع دوباره
+            </button>
+        </div>
+
+        <!-- نتیجه -->
+        <div class="result-box" id="resultBox">
+            <span class="emoji" id="resultEmoji">🌟</span>
+            <div class="score" id="scoreDisplay"></div>
+            <div class="message" id="messageDisplay"></div>
+        </div>
+    </div>
+
+    <!-- فوتر -->
+    <div class="footer">
+        <span>🌸 با آرزوی موفقیت برای دختران گل — آموزگار: خانم اسعدی 🌸</span>
+    </div>
+</div>
+
+<script>
+    // پاسخ‌های صحیح سوالات چندگزینه‌ای
+    const correctAnswers = {
+        q1: '2',
+        q2: '1',
+        q3: '2',
+        q4: '2',
+        q5: '2'
+    };
+
+    function calculateScore() {
+        let score = 0;
+        const totalMCQ = 5;
+        const totalDescriptive = 2;
+        const totalQuestions = totalMCQ + totalDescriptive;
+        const pointsPerQuestion = 100 / totalQuestions;
+
+        for (let key in correctAnswers) {
+            const selected = document.querySelector(`input[name="${key}"]:checked`);
+            if (selected && selected.value === correctAnswers[key]) {
+                score += pointsPerQuestion;
+            }
+        }
+
+        const textareas = document.querySelectorAll('.short-answer textarea');
+        textareas.forEach(textarea => {
+            if (textarea.value.trim().length > 0) {
+                score += pointsPerQuestion;
+            }
+        });
+
+        const finalScore = Math.round(score);
+
+        const resultBox = document.getElementById('resultBox');
+        const scoreDisplay = document.getElementById('scoreDisplay');
+        const messageDisplay = document.getElementById('messageDisplay');
+        const resultEmoji = document.getElementById('resultEmoji');
+
+        resultBox.classList.add('show');
+        scoreDisplay.textContent = `نمره شما: ${finalScore} از ۱۰۰`;
+
+        if (finalScore >= 90) {
+            resultEmoji.textContent = '🏆';
+            messageDisplay.textContent = 'عالی! تو یک ستاره‌ی درخشان هستی! ✨';
+        } else if (finalScore >= 75) {
+            resultEmoji.textContent = '🌟';
+            messageDisplay.textContent = 'خیلی خوب! با کمی تلاش بیشتر عالی می‌شوی! 💪';
+        } else if (finalScore >= 50) {
+            resultEmoji.textContent = '📚';
+            messageDisplay.textContent = 'خوب است، اما می‌توانی بهتر باشی! دوباره تلاش کن! 🌱';
+        } else {
+            resultEmoji.textContent = '💪';
+            messageDisplay.textContent = 'نگران نباش! با مطالعه‌ی بیشتر می‌توانی موفق شوی! 🌸';
+        }
+
+        resultBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    function resetQuiz() {
+        document.querySelectorAll('input[type="radio"]').forEach(radio => {
+            radio.checked = false;
+        });
+
+        document.querySelectorAll('.short-answer textarea').forEach(textarea => {
+            textarea.value = '';
+        });
+
+        document.getElementById('resultBox').classList.remove('show');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+</script>
+
+</body>
+</html>
