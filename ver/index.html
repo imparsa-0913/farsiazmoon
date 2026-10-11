@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>آزمون فارسی پنجم ابتدایی - درس یک - خانم اسعدی</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800&display=swap');
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background: linear-gradient(135deg, #fce4ec 0%, #f3e5f5 50%, #e8eaf6 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            padding: 30px 15px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 850px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 30px;
+            box-shadow: 0 20px 60px rgba(180, 130, 180, 0.25), 0 8px 20px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* هدر */
+        .header {
+            background: linear-gradient(135deg, #f8bbd0 0%, #e1bee7 50%, #d1c4e9 100%);
+            padding: 35px 30px 25px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .header::before { content: '🌸'; position: absolute; top: 10px; right: 20px; font-size: 40px; opacity: 0.4; transform: rotate(15deg); }
+        .header::after { content: '🌿'; position: absolute; bottom: 5px; left: 25px; font-size: 35px; opacity: 0.35; transform: rotate(-10deg); }
+        .header h1 { font-size: 1.9rem; color: #4a148c; font-weight: 700; margin-bottom: 6px; position: relative; z-index: 1; }
+        .header h2 { font-size: 1.15rem; color: #6a1b9a; font-weight: 400; position: relative; z-index: 1; }
+
+        .teacher-name {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(4px);
+            color: #6a1b9a;
+            padding: 6px 24px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin-top: 12px;
+            position: relative;
+            z-index: 1;
+            border: 1.5px solid rgba(206, 147, 216, 0.5);
+        }
+        .teacher-name .icon { margin-left: 6px; }
+
+        .header .decor-line {
+            width: 80px; height: 4px;
+            background: linear-gradient(90deg, #ce93d8, #f48fb1, #ce93d8);
+            border-radius: 10px; margin: 12px auto 0;
+            position: relative; z-index: 1;
+        }
+
+        /* بخش نام دانش‌آموز */
+        .name-section {
+            margin: 25px 30px 10px;
+            background: linear-gradient(135deg, #fdf2f8, #f3e5f5);
+            border-radius: 20px;
+            padding: 22px 25px;
+            border: 2px solid #f8bbd0;
+            text-align: center;
+        }
+        .name-section .name-label {
+            font-size: 1.05rem; font-weight: 700; color: #6a1b9a;
+            margin-bottom: 14px; display: flex; align-items: center;
+            justify-content: center; gap: 8px; flex-wrap: wrap;
+        }
+        .name-section input[type="text"] {
+            width: 100%; max-width: 400px;
+            padding: 14px 20px;
+            border: 2px solid #ce93d8;
+            border-radius: 50px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 1rem; color: #4a148c; text-align: center;
+            outline: none; transition: all 0.3s ease;
+            background: #fff; direction: rtl;
+        }
+        .name-section input[type="text"]:focus {
+            border-color: #8e24aa;
+            box-shadow: 0 0 0 4px rgba(206, 147, 216, 0.25);
+        }
+
+        /* بخش سوالات */
+        .quiz-section { padding: 20px 30px 35px; }
+        .quiz-section .section-title {
+            display: flex; align-items: center; gap: 10px;
+            font-size: 1.2rem; font-weight: 700; color: #6a1b9a;
+            margin-bottom: 20px; flex-wrap: wrap;
+        }
+
+        .question-card {
+            background: #faf5ff;
+            border-radius: 18px;
+            padding: 20px 22px;
+            margin-bottom: 18px;
+            border: 1.5px solid #ede7f6;
+            transition: all 0.3s ease;
+        }
+        .question-card:hover {
+            border-color: #ce93d8;
+            box-shadow: 0 6px 20px rgba(206, 147, 216, 0.2);
+            transform: translateY(-2px);
+        }
+
+        .q-number {
+            display: inline-flex; align-items: center; justify-content: center;
+            width: 32px; height: 32px;
+            background: linear-gradient(135deg, #ce93d8, #ba68c8);
+            color: #fff; border-radius: 50%; font-size: 0.9rem;
+            font-weight: 700; margin-left: 8px; flex-shrink: 0;
+        }
+        .q-text {
+            font-size: 1rem; font-weight: 600; color: #4a148c;
+            line-height: 1.8; display: flex; align-items: flex-start;
+            gap: 8px; margin-bottom: 14px;
+        }
+        .q-text .q-content { flex: 1; }
+
+        /* دکمه پخش صدا */
+        .speak-btn {
+            background: linear-gradient(135deg, #f48fb1, #ce93d8);
+            color: #fff;
+            border: none;
+            width: 36px; height: 36px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 10px rgba(244, 143, 177, 0.4);
+        }
+        .speak-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 15px rgba(244, 143, 177, 0.6);
+        }
+        .speak-btn:active { transform: scale(0.95); }
+        .speak-btn.speaking {
+            background: linear-gradient(135deg, #ba68c8, #8e24aa);
+            animation: pulse 1s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(206, 147, 216, 0.6); }
+            50% { box-shadow: 0 0 0 10px rgba(206, 147, 216, 0); }
+        }
+
+        /* گزینه‌ها */
+        .options { display: flex; flex-direction: column; gap: 8px; padding-right: 40px; }
+        .option {
+            display: flex; align-items: center; gap: 10px;
+            background: #fff; padding: 10px 16px;
+            border-radius: 12px; border: 1.5px solid #ede7f6;
+            cursor: pointer; transition: all 0.25s ease;
+            font-size: 0.92rem; color: #4a148c;
+        }
+        .option:hover {
+            border-color: #ce93d8;
+            background: #fdf2f8;
+            transform: translateX(-4px);
+        }
+        .option input[type="radio"] {
+            appearance: none; -webkit-appearance: none;
+            width: 20px; height: 20px;
+            border: 2px solid #ce93d8;
+            border-radius: 50%; outline: none;
+            cursor: pointer; flex-shrink: 0;
+            transition: all 0.2s ease;
+        }
+        .option input[type="radio"]:checked {
+            border-color: #8e24aa;
+            background: #8e24aa;
+            box-shadow: inset 0 0 0 3px #fff;
+        }
+
+        /* سوالات تشریحی */
+        .short-answer { padding-right: 40px; }
+        .short-answer textarea {
+            width: 100%; min-height: 70px;
+            border: 1.5px solid #ede7f6;
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 0.92rem; color: #4a148c;
+            resize: vertical; outline: none;
+            background: #fff; direction: rtl;
+            transition: border-color 0.3s;
+        }
+        .short-answer textarea:focus {
+            border-color: #ce93d8;
+            box-shadow: 0 0 0 3px rgba(206, 147, 216, 0.15);
+        }
+        .short-answer textarea::placeholder { color: #b39ddb; }
+
+        /* دکمه‌ها */
+        .btn-group {
+            display: flex; gap: 15px;
+            justify-content: center; margin-top: 30px; flex-wrap: wrap;
+        }
+        .btn {
+            padding: 14px 40px;
+            border: none; border-radius: 50px;
+            font-family: 'Vazirmatn', sans-serif;
+            font-size: 1rem; font-weight: 700;
+            cursor: pointer; transition: all 0.3s ease;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn-submit {
+            background: linear-gradient(135deg, #ab47bc, #8e24aa);
+            color: #fff;
+            box-shadow: 0 8px 25px rgba(142, 36, 170, 0.35);
+        }
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(142, 36, 170, 0.45);
+        }
+        .btn-reset {
+            background: #f3e5f5;
+            color: #6a1b9a;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+        }
+        .btn-reset:hover { background: #ede7f6; transform: translateY(-3px); }
+
+        /* نتیجه */
+        .result-box {
+            display: none;
+            margin-top: 25px;
+            background: linear-gradient(135deg, #f3e5f5, #fce4ec);
+            border-radius: 20px;
+            padding: 25px 30px;
+            text-align: center;
+            border: 2px solid #ce93d8;
+            animation: fadeIn 0.6s ease;
+        }
+        .result-box.show { display: block; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .result-box .score { font-size: 2.2rem; font-weight: 800; color: #6a1b9a; }
+        .result-box .message { font-size: 1rem; color: #4a148c; margin-top: 8px; line-height: 1.8; }
+        .result-box .emoji { font-size: 2.5rem; display: block; margin-bottom: 5px; }
+
+        .proud-message {
+            display: none;
+            margin-top: 18px;
+            padding: 18px 22px;
+            background: linear-gradient(135deg, #fff3e0, #fce4ec, #f3e5f5);
+            border-radius: 18px;
+            border: 2px dashed #f48fb1;
+            font-size: 1.1rem; font-weight: 700;
+            color: #ad1457; line-height: 1.9;
+            animation: pulseGlow 2s ease-in-out infinite;
+        }
+        .proud-message.show { display: block; }
+        .proud-message .heart { font-size: 1.4rem; margin: 0 4px; }
+        @keyframes pulseGlow {
+            0%, 100% { box-shadow: 0 0 0 0 rgba(244, 143, 177, 0.4); }
+            50% { box-shadow: 0 0 25px 6px rgba(244, 143, 177, 0.25); }
+        }
+
+        /* پیام سوپرایز (نمره عالی) */
+        .surprise-message {
+            display: none;
+            margin-top: 22px;
+            padding: 25px 22px;
+            background: linear-gradient(135deg, #ffd54f, #ff8a65, #f06292, #ba68c8);
+            background-size: 300% 300%;
+            border-radius: 22px;
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #fff;
+            line-height: 2;
+            text-align: center;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+            box-shadow: 0 12px 35px rgba(240, 98, 146, 0.5);
+            animation: gradientMove 4s ease infinite, surprisePop 0.8s ease;
+            border: 3px solid #fff;
+            position: relative;
+            overflow: hidden;
+        }
+        .surprise-message.show { display: block; }
+
+        .surprise-message::before {
+            content: '🎉';
+            position: absolute;
+            top: -10px; right: 10px;
+            font-size: 35px;
+            animation: spin 3s linear infinite;
+        }
+        .surprise-message::after {
+            content: '🎊';
+            position: absolute;
+            bottom: -10px; left: 10px;
+            font-size: 35px;
+            animation: spin 3s linear infinite reverse;
+        }
+        .surprise-message .star {
+            display: inline-block;
+            font-size: 1.5rem;
+            animation: bounce 0.8s ease infinite alternate;
+        }
+        .surprise-message .star:nth-child(2) { animation-delay: 0.2s; }
+        .surprise-message .star:nth-child(3) { animation-delay: 0.4s; }
+
+        @keyframes gradientMove {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        @keyframes surprisePop {
+            0% { transform: scale(0.5) rotate(-5deg); opacity: 0; }
+            60% { transform: scale(1.05) rotate(2deg); }
+            100% { transform: scale(1) rotate(0); opacity: 1; }
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        @keyframes bounce {
+            from { transform: translateY(0); }
+            to { transform: translateY(-8px); }
+        }
+
+        /* کاغذرنگی‌های فشفشه */
+        .confetti {
+            position: fixed;
+            width: 12px;
+            height: 12px;
+            top: -20px;
+            z-index: 9999;
+            pointer-events: none;
+            opacity: 0.95;
+            border-radius: 2px;
+        }
+        .confetti.heart {
+            border-radius: 50% 50% 50% 0;
+            transform: rotate(-45deg);
+        }
+
+        /* هشدار خطا */
+        .error-box {
+            display: none;
+            margin: 20px 30px 0;
+            padding: 15px 20px;
+            background: #ffebee;
+            border-right: 5px solid #e57373;
+            border-radius: 12px;
+            color: #c62828;
+            font-weight: 600;
+            text-align: center;
+            animation: shake 0.5s ease;
+        }
+        .error-box.show { display: block; }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            25% { transform: translateX(-8px); }
+            75% { transform: translateX(8px); }
+        }
+
+        /* فوتر */
+        .footer {
+            text-align: center; padding: 18px;
+            background: linear-gradient(135deg, #fdf2f8, #f3e5f5);
+            color: #8e24aa; font-size: 0.8rem;
+            border-top: 1px solid #ede7f6;
+        }
+        .footer span { font-weight: 600; }
+
+        @media (max-width: 600px) {
+            .header h1 { font-size: 1.4rem; }
+            .header h2 { font-size: 1rem; }
+            .name-section { margin: 15px 15px 5px; padding: 18px; }
+            .name-section .name-label { font-size: 0.95rem; }
+            .quiz-section { padding: 15px 15px 25px; }
+            .question-card { padding: 15px; }
+            .question-card .q-text { font-size: 0.9rem; }
+            .options { padding-right: 20px; }
+            .option { font-size: 0.85rem; padding: 8px 12px; }
+            .short-answer { padding-right: 20px; }
+            .btn { padding: 12px 28px; font-size: 0.9rem; }
+            .btn-group { flex-direction: column; align-items: center; }
+            .result-box .score { font-size: 1.8rem; }
+            .proud-message { font-size: 0.95rem; }
+            .surprise-message { font-size: 1rem; padding: 18px 14px; }
+            .surprise-message::before,
+            .surprise-message::after { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <!-- هدر -->
+    <div class="header">
+        <h1>🌸 آزمون فارسی 🌸</h1>
+        <h2>پایه پنجم ابتدایی — درس یک</h2>
+        <div class="teacher-name">
+            <span class="icon">👩‍🏫</span>
+            آموزگار: خانم اسعدی
+        </div>
+        <div class="decor-line"></div>
+    </div>
+
+    <!-- هشدار خطا -->
+    <div class="error-box" id="errorBox">⚠️ لطفاً نام خود را وارد کنید.</div>
+
+    <form id="quizForm" onsubmit="return false;">
+        <!-- نام دانش‌آموز -->
+        <div class="name-section">
+            <div class="name-label">
+                <span class="icon">✍️</span>
+                <span>دانش‌آموز عزیز، لطفاً نام خود را بنویس:</span>
+                <button type="button" class="speak-btn" onclick="speakText('دانش آموز عزیز، لطفاً نام خود را بنویس', event)" title="پخش صدا">🔊</button>
+            </div>
+            <input type="text" name="studentName" id="studentName" placeholder="نام و نام خانوادگی..." autocomplete="off">
+        </div>
+
+        <!-- سوالات -->
+        <div class="quiz-section">
+            <div class="section-title">
+                <span class="icon">✏️</span>
+                <span>به سوالات زیر پاسخ بده</span>
+                <button type="button" class="speak-btn" onclick="speakText('به سوالات زیر پاسخ بده', event)" title="پخش صدا">🔊</button>
+            </div>
+
+            <!-- سوال ۱ -->
+            <div class="question-card">
+                <div class="q-text">
+                    <span class="q-number">۱</span>
+                    <span class="q-content">بر اساس متن درس، برای شناخت بهتر عالم چه راهی پیشنهاد شده است؟</span>
+                    <button type="button" class="speak-btn" onclick="speakText('بر اساس متن درس، برای شناخت بهتر عالم چه راهی پیشنهاد شده است؟', event)" title="خواندن سوال">🔊</button>
+                </div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q1" value="1"><span>فقط تماشای کوه‌ها و درّه‌ها</span></label>
+                    <label class="option"><input type="radio" name="q1" value="2"><span>تماشا کردن پدیده‌ها، اندیشیدن درباره‌ی آفرینش آنها و مقایسه با یکدیگر</span></label>
+                    <label class="option"><input type="radio" name="q1" value="3"><span>سفر کردن به مناطق مختلف</span></label>
+                    <label class="option"><input type="radio" name="q1" value="4"><span>فقط مطالعه کتاب‌های علمی</span></label>
+                </div>
+            </div>
+
+            <!-- سوال ۲ -->
+            <div class="question-card">
+                <div class="q-text">
+                    <span class="q-number">۲</span>
+                    <span class="q-content">نویسنده، جهان را چه چیزی معرفی می‌کند؟</span>
+                    <button type="button" class="speak-btn" onclick="speakText('نویسنده، جهان را چه چیزی معرفی می کند؟', event)" title="خواندن سوال">🔊</button>
+                </div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q2" value="1"><span>تماشاخانه‌ی شگفتی‌های آفرینش</span></label>
+                    <label class="option"><input type="radio" name="q2" value="2"><span>دفتری پر از نوشته‌های انسان‌ها</span></label>
+                    <label class="option"><input type="radio" name="q2" value="3"><span>جنگلی تاریک و پر از رمز و راز</span></label>
+                    <label class="option"><input type="radio" name="q2" value="4"><span>موزه‌ای از صنایع دستی</span></label>
+                </div>
+            </div>
+
+            <!-- سوال ۳ -->
+            <div class="question-card">
+                <div class="q-text">
+                    <span class="q-number">۳</span>
+                    <span class="q-content">در متن درس، کدام مورد به عنوان یکی از شگفتی‌ها و بهترین موضوع برای فکر کردن معرفی شده است؟</span>
+                    <button type="button" class="speak-btn" onclick="speakText('در متن درس، کدام مورد به عنوان یکی از شگفتی ها و بهترین موضوع برای فکر کردن معرفی شده است؟', event)" title="خواندن سوال">🔊</button>
+                </div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q3" value="1"><span>کوه‌های سر به فلک کشیده</span></label>
+                    <label class="option"><input type="radio" name="q3" value="2"><span>آب گوارا</span></label>
+                    <label class="option"><input type="radio" name="q3" value="3"><span>پروانه‌های مخملی</span></label>
+                    <label class="option"><input type="radio" name="q3" value="4"><span>عنکبوت‌ها</span></label>
+                </div>
+            </div>
+
+            <!-- سوال ۴ -->
+            <div class="question-card">
+                <div class="q-text">
+                    <span class="q-number">۴</span>
+                    <span class="q-content">نویسنده درباره‌ی علف‌های سبز چه می‌گوید؟</span>
+                    <button type="button" class="speak-btn" onclick="speakText('نویسنده درباره ی علف های سبز چه می گوید؟', event)" title="خواندن سوال">🔊</button>
+                </div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q4" value="1"><span>همیشه سبز و محکم هستند</span></label>
+                    <label class="option"><input type="radio" name="q4" value="2"><span>نرم و شکننده هستند ولی گاهی از میان سنگلاخ سر در می‌آورند</span></label>
+                    <label class="option"><input type="radio" name="q4" value="3"><span>در گرما و سرما همیشه زنده می‌مانند</span></label>
+                    <label class="option"><input type="radio" name="q4" value="4"><span>فقط در بهار رشد می‌کنند</span></label>
+                </div>
+            </div>
+
+            <!-- سوال ۵ -->
+            <div class="question-card">
+                <div class="q-text">
+                    <span class="q-number">۵</span>
+                    <span class="q-content">چه کسانی از هر چیز پرسش می‌کنند و برای یافتن پاسخ جست‌وجو می‌کنند؟</span>
+                    <button type="button" class="speak-btn" onclick="speakText('چه کسانی از هر چیز پرسش می کنند و برای یافتن پاسخ جست و جو می کنند؟', event)" title="خواندن سوال">🔊</button>
+                </div>
+                <div class="options">
+                    <label class="option"><input type="radio" name="q5" value="1"><span>فقط معلمان</span></label>
+                    <label class="option"><input type="radio" name="q5" value="2"><span>دانشمندان و عالمان</span></label>
+                    <label class="option"><input type="radio" name="q5" value="3"><span>فقط نویسندگان</span></label>
+                    <label class="option"><input type="radio" name="q5" value="4"><span>همه مردم عادی</span></label>
+                </div>
+            </div>
+
+            <!-- سوال ۶ -->
+            <div class="question-card">
+                <div class="q-text">
+                    <span class="q-number">۶</span>
+                    <span class="q-content">چرا نویسنده می‌گوید: «آفریده‌های ساکت خدا همیشه آنجا هستند»؟ تو چه فکری می‌کنی؟ (در چند جمله بنویس)</span>
+                    <button type="button" class="speak-btn" onclick="speakText('چرا نویسنده می گوید آفریده های ساکت خدا همیشه آنجا هستند؟ تو چه فکری می کنی؟', event)" title="خواندن سوال">🔊</button>
+                </div>
+                <div class="short-answer">
+                    <textarea name="q6" placeholder="پاسخ خود را اینجا بنویسید..."></textarea>
+                </div>
+            </div>
+
+            <!-- سوال ۷ -->
+            <div class="question-card">
+                <div class="q-text">
+                    <span class="q-number">۷</span>
+                    <span class="q-content">از متن درس، دو نمونه از پدیده‌هایی که نویسنده با یکدیگر مقایسه کرده است، بنویس.</span>
+                    <button type="button" class="speak-btn" onclick="speakText('از متن درس، دو نمونه از پدیده هایی که نویسنده با یکدیگر مقایسه کرده است، بنویس', event)" title="خواندن سوال">🔊</button>
+                </div>
+                <div class="short-answer">
+                    <textarea name="q7" style="min-height:50px;" placeholder="مثال: گل با خار، بهار با زمستان..."></textarea>
+                </div>
+            </div>
+
+            <!-- دکمه‌ها -->
+            <div class="btn-group">
+                <button type="button" class="btn btn-submit" onclick="calculateScore()">
+                    <span>📝</span> مشاهده نتیجه
+                </button>
+                <button type="button" class="btn btn-reset" onclick="resetQuiz()">
+                    <span>🔄</span> شروع دوباره
+                </button>
+            </div>
+        </div>
+    </form>
+
+    <!-- نتیجه -->
+    <div class="quiz-section" id="resultSection" style="padding-top:0; display:none;">
+        <div class="result-box show" id="resultBox">
+            <span class="emoji" id="resultEmoji">🌟</span>
+            <div class="score" id="scoreDisplay"></div>
+            <div class="message" id="messageDisplay"></div>
+            <div class="proud-message" id="proudMessage">
+                <span class="heart">💖</span>
+                <span id="proudText"></span>
+                <span class="heart">💖</span>
+                <br>
+                <button type="button" class="speak-btn" style="margin-top:10px;" onclick="speakProudMessage(event)">🔊</button>
+            </div>
+
+            <!-- پیام سوپرایز برای نمره عالی -->
+            <div class="surprise-message" id="surpriseMessage">
+                <span class="star">🌟</span>
+                <span class="star">🎉</span>
+                <span class="star">🌟</span>
+                <br>
+                <span id="surpriseText"></span>
+                <br>
+                <span class="star">🌟</span>
+                <span class="star">🎊</span>
+                <span class="star">🌟</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- فوتر -->
+    <div class="footer">
+        <span>🌸 با آرزوی موفقیت برای دختران گل — آموزگار: خانم اسعدی 🌸</span>
+    </div>
+</div>
+
+<script>
+// ==========================================
+// پاسخ‌های صحیح
+// ==========================================
+const correctAnswers = {
+    q1: '2',
+    q2: '1',
+    q3: '2',
+    q4: '2',
+    q5: '2'
+};
+
+// ==========================================
+// Web Audio API - صداها
+// ==========================================
+let audioCtx = null;
+
+function getAudioContext() {
+    if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+    }
+    return audioCtx;
+}
+
+function playClickSound() {
+    try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(880, ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(440, ctx.currentTime + 0.1);
+        gain.gain.setValueAtTime(0.15, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.15);
+        osc.start(ctx.currentTime);
+        osc.stop(ctx.currentTime + 0.15);
+    } catch (e) { console.warn('صدا پخش نشد:', e); }
+}
+
+function playSuccessSound() {
+    try {
+        const ctx = getAudioContext();
+        [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.type = 'sine';
+            osc.frequency.value = freq;
+            const startTime = ctx.currentTime + i * 0.12;
+            gain.gain.setValueAtTime(0.12, startTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.35);
+            osc.start(startTime);
+            osc.stop(startTime + 0.35);
+        });
+    } catch (e) { console.warn('صدا پخش نشد:', e); }
+}
+
+// ==========================================
+// صدای جشن (فشفشه) - ملودی شاد
+// ==========================================
+function playCelebrationSound() {
+    try {
+        const ctx = getAudioContext();
+        // ملودی جشن
+        const notes = [
+            { f: 523.25, t: 0.00, d: 0.15 },  // C5
+            { f: 659.25, t: 0.15, d: 0.15 },  // E5
+            { f: 783.99, t: 0.30, d: 0.15 },  // G5
+            { f: 1046.50, t: 0.45, d: 0.30 }, // C6
+            { f: 783.99, t: 0.80, d: 0.15 },  // G5
+            { f: 1046.50, t: 0.95, d: 0.30 }, // C6
+            { f: 1318.51, t: 1.30, d: 0.50 }  // E6
+        ];
+        notes.forEach(note => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.type = 'triangle';
+            osc.frequency.value = note.f;
+            const startTime = ctx.currentTime + note.t;
+            gain.gain.setValueAtTime(0.15, startTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, startTime + note.d);
+            osc.start(startTime);
+            osc.stop(startTime + note.d + 0.05);
+        });
+
+        // صدای "فشفشه" (نویز سفید کوتاه)
+        setTimeout(() => {
+            const bufferSize = ctx.sampleRate * 0.4;
+            const buffer = ctx.createBuffer(1, bufferSize, ctx.sampleRate);
+            const data = buffer.getChannelData(0);
+            for (let i = 0; i < bufferSize; i++) {
+                data[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / bufferSize, 3);
+            }
+            const noise = ctx.createBufferSource();
+            noise.buffer = buffer;
+            const noiseGain = ctx.createGain();
+            const filter = ctx.createBiquadFilter();
+            filter.type = 'highpass';
+            filter.frequency.value = 1500;
+            noise.connect(filter);
+            filter.connect(noiseGain);
+            noiseGain.connect(ctx.destination);
+            noiseGain.gain.setValueAtTime(0.08, ctx.currentTime);
+            noiseGain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.4);
+            noise.start(ctx.currentTime);
+        }, 600);
+    } catch (e) { console.warn('صدای جشن پخش نشد:', e); }
+}
+
+function playErrorSound() {
+    try {
+        const ctx = getAudioContext();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.type = 'triangle';
+        osc.frequency.setValueAtTime(300, ctx.currentTime);
+        osc.frequency.linearRampToValueAtTime(180, ctx.currentTime + 0.2);
+        gain.gain.setValueAtTime(0.15, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.25);
+        osc.start(ctx.currentTime);
+        osc.stop(ctx.currentTime + 0.25);
+    } catch (e) { console.warn('صدا پخش نشد:', e); }
+}
+
+// ==========================================
+// Speech Synthesis
+// ==========================================
+let currentSpeakBtn = null;
+
+function speakText(text, event) {
+    if (!('speechSynthesis' in window)) return;
+
+    window.speechSynthesis.cancel();
+
+    const btn = event ? event.target.closest('.speak-btn') : null;
+    if (currentSpeakBtn === btn) {
+        if (currentSpeakBtn) currentSpeakBtn.classList.remove('speaking');
+        currentSpeakBtn = null;
+        return;
+    }
+
+    if (currentSpeakBtn) currentSpeakBtn.classList.remove('speaking');
+
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.lang = 'fa-IR';
+    utterance.rate = 0.9;
+    utterance.pitch = 1.1;
+
+    const voices = window.speechSynthesis.getVoices();
+    const faVoice = voices.find(v => v.lang && v.lang.startsWith('fa'));
+    if (faVoice) utterance.voice = faVoice;
+
+    if (btn) {
+        btn.classList.add('speaking');
+        currentSpeakBtn = btn;
+        utterance.onend = () => {
+            btn.classList.remove('speaking');
+            if (currentSpeakBtn === btn) currentSpeakBtn = null;
+        };
+        utterance.onerror = () => {
+            btn.classList.remove('speaking');
+            if (currentSpeakBtn === btn) currentSpeakBtn = null;
+        };
+    }
+
+    window.speechSynthesis.speak(utterance);
+}
+
+if ('speechSynthesis' in window) {
+    window.speechSynthesis.onvoiceschanged = () => window.speechSynthesis.getVoices();
+    window.speechSynthesis.getVoices();
+}
+
+// ==========================================
+// فشفشه (Confetti)
+// ==========================================
+const confettiColors = [
+    '#f44336', '#e91e63', '#9c27b0', '#673ab7',
+    '#3f51b5', '#2196f3', '#00bcd4', '#009688',
+    '#4caf50', '#8bc34a', '#cddc39', '#ffeb3b',
+    '#ffc107', '#ff9800', '#ff5722', '#ff4081',
+    '#e040fb', '#7c4dff', '#536dfe', '#40c4ff'
+];
+
+function createConfettiPiece(x, y) {
+    const el = document.createElement('div');
+    el.className = 'confetti';
+    if (Math.random() > 0.7) el.classList.add('heart');
+
+    const color = confettiColors[Math.floor(Math.random() * confettiColors.length)];
+    const size = 8 + Math.random() * 10;
+
+    el.style.left = x + 'px';
+    el.style.top = y + 'px';
+    el.style.width = size + 'px';
+    el.style.height = size + 'px';
+    el.style.background = color;
+    el.style.boxShadow = `0 0 8px ${color}`;
+
+    document.body.appendChild(el);
+
+    const angle = Math.random() * Math.PI * 2;
+    const velocity = 4 + Math.random() * 8;
+    let vx = Math.cos(angle) * velocity;
+    let vy = Math.sin(angle) * velocity - 6;
+
+    const gravity = 0.28;
+    const drag = 0.99;
+    let rotation = Math.random() * 360;
+    const rotationSpeed = (Math.random() - 0.5) * 25;
+
+    let posX = x;
+    let posY = y;
+    let life = 0;
+    const maxLife = 180 + Math.random() * 120;
+
+    function animate() {
+        life++;
+        vx *= drag;
+        vy = vy * drag + gravity;
+        posX += vx;
+        posY += vy;
+        rotation += rotationSpeed;
+
+        el.style.transform = `translate(${posX - x}px, ${posY - y}px) rotate(${rotation}deg)`;
+        el.style.opacity = Math.max(0, 1 - life / maxLife);
+
+        if (life < maxLife && posY < window.innerHeight + 100) {
+            requestAnimationFrame(animate);
+        } else {
+            el.remove();
+        }
+    }
+    requestAnimationFrame(animate);
+}
+
+function fireConfettiBurst(x, y, count = 60) {
+    for (let i = 0; i < count; i++) {
+        setTimeout(() => createConfettiPiece(x, y), i * 8);
+    }
+}
+
+function startConfettiShow() {
+    const w = window.innerWidth;
+    const h = window.innerHeight;
+
+    // انفجار از گوشه‌ها
+    fireConfettiBurst(w * 0.1, h * 0.4, 80);
+    setTimeout(() => fireConfettiBurst(w * 0.9, h * 0.4, 80), 200);
+    // انفجار از بالا
+    setTimeout(() => fireConfettiBurst(w * 0.5, h * 0.05, 100), 400);
+    setTimeout(() => fireConfettiBurst(w * 0.25, h * 0.1, 60), 700);
+    setTimeout(() => fireConfettiBurst(w * 0.75, h * 0.1, 60), 900);
+
+    // باران کاغذرنگی برای ۵ ثانیه
+    let duration = 5000;
+    let interval = setInterval(() => {
+        const x = Math.random() * w;
+        createConfettiPiece(x, -20);
+    }, 100);
+
+    setTimeout(() => {
+        clearInterval(interval);
+    }, duration);
+}
+
+// ==========================================
+// محاسبه نمره
+// ==========================================
+function calculateScore() {
+    const studentNameInput = document.getElementById('studentName');
+    const studentName = studentNameInput.value.trim();
+    const errorBox = document.getElementById('errorBox');
+
+    if (studentName === '') {
+        errorBox.classList.add('show');
+        playErrorSound();
+        studentNameInput.focus();
+        studentNameInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        setTimeout(() => errorBox.classList.remove('show'), 4000);
+        return;
+    }
+
+    errorBox.classList.remove('show');
+
+    let score = 0;
+    const totalQuestions = 7;
+    const pointsPerQuestion = 100 / totalQuestions;
+
+    for (let key in correctAnswers) {
+        const selected = document.querySelector(`input[name="${key}"]:checked`);
+        if (selected && selected.value === correctAnswers[key]) {
+            score += pointsPerQuestion;
+        }
+    }
+
+    document.querySelectorAll('.short-answer textarea').forEach(textarea => {
+        if (textarea.value.trim().length > 0) {
+            score += pointsPerQuestion;
+        }
+    });
+
+    const finalScore = Math.round(score);
+
+    const resultSection = document.getElementById('resultSection');
+    const scoreDisplay = document.getElementById('scoreDisplay');
+    const messageDisplay = document.getElementById('messageDisplay');
+    const resultEmoji = document.getElementById('resultEmoji');
+    const proudMessage = document.getElementById('proudMessage');
+    const proudText = document.getElementById('proudText');
+    const surpriseMessage = document.getElementById('surpriseMessage');
+    const surpriseText = document.getElementById('surpriseText');
+
+    resultSection.style.display = 'block';
+
+    scoreDisplay.textContent = `${studentName} جان، نمره شما: ${finalScore} از ۱۰۰`;
+
+    let message = '', emoji = '';
+    if (finalScore >= 90) {
+        emoji = '🏆';
+        message = 'عالی! تو یک ستاره‌ی درخشان هستی! ✨';
+    } else if (finalScore >= 75) {
+        emoji = '🌟';
+        message = 'خیلی خوب! با کمی تلاش بیشتر عالی می‌شوی! 💪';
+    } else if (finalScore >= 50) {
+        emoji = '📚';
+        message = 'خوب است، اما می‌توانی بهتر باشی! دوباره تلاش کن! 🌱';
+    } else {
+        emoji = '💪';
+        message = 'نگران نباش! با مطالعه‌ی بیشتر می‌توانی موفق شوی! 🌸';
+    }
+
+    resultEmoji.textContent = emoji;
+    messageDisplay.textContent = message;
+
+    // پیام افتخار (نمره ۷۵ به بالا)
+    if (finalScore >= 75) {
+        proudText.textContent = `${studentName} جان، خانم اسعدی بهت افتخار می‌کنه!`;
+        proudMessage.classList.add('show');
+        proudMessage.dataset.studentName = studentName;
+    } else {
+        proudMessage.classList.remove('show');
+    }
+
+    // 🎉 سوپرایز برای نمره عالی (۹۰ به بالا)
+    if (finalScore >= 90) {
+        surpriseText.innerHTML = `آفرین دختر گلم! 🌸<br>خانم اسعدی بهت افتخار می‌کنه<br><span style="font-size:1.5rem;color:#fff;">${studentName} جان</span>`;
+        surpriseMessage.classList.add('show');
+
+        // پخش صدای جشن
+        setTimeout(() => {
+            playCelebrationSound();
+            startConfettiShow();
+        }, 500);
+
+        // خواندن پیام با صدا
+        setTimeout(() => {
+            speakText(`آفرین دختر گلم، خانم اسعدی بهت افتخار می‌کنه ${studentName} جان`, null);
+        }, 2500);
+    } else {
+        surpriseMessage.classList.remove('show');
+        if (finalScore >= 75) {
+            setTimeout(playSuccessSound, 400);
+        }
+    }
+
+    resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+// ==========================================
+// پخش صدا برای پیام افتخار
+// ==========================================
+function speakProudMessage(event) {
+    const proudMessage = document.getElementById('proudMessage');
+    const name = proudMessage.dataset.studentName || 'دانش آموز';
+    speakText(`${name} جان، خانم اسعدی بهت افتخار می‌کنه`, event);
+}
+
+// ==========================================
+// ریست
+// ==========================================
+function resetQuiz() {
+    playClickSound();
+
+    document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+    document.querySelectorAll('.short-answer textarea').forEach(t => t.value = '');
+    document.getElementById('studentName').value = '';
+
+    document.getElementById('resultSection').style.display = 'none';
+    document.getElementById('proudMessage').classList.remove('show');
+    document.getElementById('surpriseMessage').classList.remove('show');
+    document.getElementById('errorBox').classList.remove('show');
+
+    // حذف کاغذرنگی‌ها
+    document.querySelectorAll('.confetti').forEach(c => c.remove());
+
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// ==========================================
+// اتصال رویدادها
+// ==========================================
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('input[type="radio"]').forEach(radio => {
+        radio.addEventListener('change', playClickSound);
+    });
+
+    document.body.addEventListener('click', function initAudio() {
+        getAudioContext();
+    }, { once: true });
+
+    document.getElementById('studentName').addEventListener('keypress', function(e) {
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            document.querySelector('input[name="q1"]').focus();
+        }
+    });
+});
+</script>
+
+</body>
+</html>
